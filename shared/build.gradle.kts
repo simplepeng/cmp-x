@@ -9,6 +9,7 @@ plugins {
     `maven-publish`
 }
 
+//https://docs.github.com/zh/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry
 // build.gradle.kts (在你的 Compose Multiplatform 模块中)
 
 val GITHUB_USERNAME = "simplepeng" // 例如：octocat
@@ -16,11 +17,6 @@ val REPO_NAME = "cmp-x" // 例如：compose-library
 
 // 在 publishing 块中配置仓库
 publishing {
-    // 确保为所有组件创建发布
-    publications {
-        // Compose Multiplatform 插件通常会为你生成这些 publication
-    }
-
     repositories {
         maven {
             // 这是 GitHub Packages 的 URL 格式
@@ -36,6 +32,11 @@ publishing {
                 password = System.getenv("GPR_TOKEN") ?: project.findProperty("gprToken") as String? ?: ""
             }
         }
+    }
+    // 确保为所有组件创建发布
+    publications {
+        // Compose Multiplatform 插件通常会为你生成这些 publication
+        version = "0.0.5"
     }
 }
 
