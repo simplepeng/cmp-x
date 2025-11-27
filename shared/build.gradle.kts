@@ -9,6 +9,36 @@ plugins {
     `maven-publish`
 }
 
+// build.gradle.kts (在你的 Compose Multiplatform 模块中)
+
+val GITHUB_USERNAME = "simplepeng" // 例如：octocat
+val REPO_NAME = "cmp-x" // 例如：compose-library
+
+// 在 publishing 块中配置仓库
+publishing {
+    // 确保为所有组件创建发布
+    publications {
+        // Compose Multiplatform 插件通常会为你生成这些 publication
+    }
+
+    repositories {
+        maven {
+            // 这是 GitHub Packages 的 URL 格式
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/$GITHUB_USERNAME/$REPO_NAME")
+
+            // 配置认证信息
+            credentials {
+                // 在 CI 环境中，使用 GH_TOKEN 或我们定义的 GPR_TOKEN
+                username = System.getenv("GITHUB_ACTOR") ?: GITHUB_USERNAME // CI 环境中会使用 GITHUB_ACTOR
+
+                // 从环境变量中获取 Token
+                password = System.getenv("GPR_TOKEN") ?: project.findProperty("gprToken") as String? ?: ""
+            }
+        }
+    }
+}
+
 kotlin {
 
     // Target declarations - add or remove as needed below. These define
