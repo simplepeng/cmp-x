@@ -4,7 +4,7 @@ on:
   push:
     # 仅在发布新的 Git 标签时触发发布流程
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
 
 jobs:
   publish:
