@@ -55,8 +55,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             //
-            implementation(project(":shared"))
-//            implementation("cmp-x:shared:unspecified")
+//            implementation(project(":shared"))
+            implementation("cmp-x:shared:0.0.5")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

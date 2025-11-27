@@ -36,7 +36,11 @@ publishing {
     // 确保为所有组件创建发布
     publications {
         // Compose Multiplatform 插件通常会为你生成这些 publication
-        version = "0.0.5"
+        withType<MavenPublication> {
+            groupId = "com.github.simplepeng"
+            artifactId = "cmp-x"
+            version = "0.0.6"
+        }
     }
 }
 
