@@ -25,7 +25,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-        maven(url = "https://maven.pkg.github.com/simplepeng/cmp-x")
+//        maven(url = "https://maven.pkg.github.com/simplepeng/cmp-x")
     }
 }
 
